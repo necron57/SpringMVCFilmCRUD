@@ -8,6 +8,9 @@
 </head>
 <body>
 <h1>Full-Stack Films, Inc.</h1>
-
+<form action="showFilm.do" method="POST">
+<input type="number" name="filmId"> <br>
+<button> Get Film</button>
+</form>
 </body>
 </html>
