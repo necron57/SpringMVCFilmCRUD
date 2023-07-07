@@ -30,6 +30,9 @@ public class FilmController {
 		mv.addObject("film", film);
 		return mv;
 	}
-	
+	<<<<<<<<<<< HEAD
+	// stuff added by non repo ownwer
+	==============
 	// stuff added by repo owner
+	>>>>>>>>>-a9eyurqwai0ejfn0aw9eudf-aiwejcp
 }
