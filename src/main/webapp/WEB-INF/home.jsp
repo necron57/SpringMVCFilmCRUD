@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +8,17 @@
 <title>MVC Film Site</title>
 </head>
 <body>
-<h1>Full-Stack Films, Inc.</h1>
-<form action="showFilm.do" method="POST">
-<input type="number" name="filmId"> <br>
-<button> Get Film</button>
-</form>
+	<h1>Full-Stack Films, Inc.</h1>
+	<c:choose>
+		<c:when test="${not empty film }">
+			<h2>${film.title }</h2>
+		</c:when>
+		<c:otherwise>
+		</c:otherwise>
+	</c:choose>
+	<form action="showFilm.do" method="POST">
+		<input type="number" name="filmId"> <br>
+		<button>Get Film</button>
+	</form>
 </body>
 </html>
