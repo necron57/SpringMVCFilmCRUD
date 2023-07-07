@@ -21,6 +21,7 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView("WEB-INF/home.jsp");
 		return mv;
 	}
+
 	@RequestMapping(path = { "showFilm.do" })
 	public ModelAndView showFilm(Integer filmId) throws SQLException {
 		ModelAndView mv = new ModelAndView("WEB-INF/home.jsp");
@@ -30,9 +31,5 @@ public class FilmController {
 		mv.addObject("film", film);
 		return mv;
 	}
-	
-	// stuff added by non repo ownwer
 
-	// stuff added by repo owner
-	
 }
