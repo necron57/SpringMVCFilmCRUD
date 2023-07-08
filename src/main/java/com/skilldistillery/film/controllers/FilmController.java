@@ -23,18 +23,15 @@ public class FilmController {
 	}
 
 	@RequestMapping(path = { "showFilm.do" })
-	public ModelAndView showFilm(Integer filmId)  {
-		ModelAndView mv = new ModelAndView("WEB-INF/home.jsp");
-		System.out.println(filmId);
-		Film film;
-		try {
-			film = filmDao.findFilmById(filmId);
-			System.out.println(film);
-			mv.addObject("film", film);
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
+	public ModelAndView showFilm(Integer filmId) {
+
+		Film film = filmDao.findFilmById(filmId);
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/home.jsp");
+		mv.addObject("film", film);
+		System.out.println("s");
+
 		return mv;
 	}
 

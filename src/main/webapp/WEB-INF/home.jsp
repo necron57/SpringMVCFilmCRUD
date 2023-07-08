@@ -19,5 +19,9 @@
 		</c:when>
 	</c:choose>
 
+<<<<<<< HEAD
+=======
+	
+>>>>>>> cab375582a52855bd1b3a1f60fee760f74e08b76
 </body>
 </html>
