@@ -17,10 +17,12 @@
 	<a href="createAFilm.html">Add your own movie here!</a>
 
 	<c:choose>
-		<c:when test="${empty param.deleteFilm }">
+		<c:when test="${film == true }">
 			<p>Film has been TERMINATED</p>
 		</c:when>
-		<c:otherwise><p>Film is still alive try again!</p></c:otherwise>
+		<c:otherwise>
+			<p>Film cannot be deleted please try again!</p>
+		</c:otherwise>
 
 	</c:choose>
 
