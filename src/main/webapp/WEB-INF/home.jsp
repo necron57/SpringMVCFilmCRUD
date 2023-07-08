@@ -20,9 +20,6 @@
 		</c:otherwise>
 	</c:choose>
 
-	<form action="showFilm.do" method="POST">
-		<input type="number" name="filmId"> <br>
-		<button>Get Film</button>
-	</form>
+	
 </body>
 </html>
