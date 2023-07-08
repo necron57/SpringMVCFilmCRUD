@@ -30,6 +30,7 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/home.jsp");
 		mv.addObject("film", film);
+		System.out.println("s");
 
 		return mv;
 	}
