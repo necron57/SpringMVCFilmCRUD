@@ -50,7 +50,7 @@ public class FilmController {
 
 	}
 
-	@RequestMapping(path = { "showFilm.do" }, params = "filmTitle")
+	@RequestMapping(path = { "createFilm.do" }, params = "filmTitle")
 	public ModelAndView showFilm(String filmTitle, String filmDescrip) {
 
 		Film film = new Film(filmTitle, filmDescrip);
@@ -65,12 +65,17 @@ public class FilmController {
 
 	}
 
-	@RequestMapping(path = { "showFilm.do" }, params = "deleteFilm")
-	public ModelAndView deleteFilm(Integer filmId) {
+	@RequestMapping(path = { "deleteFilm.do" }, params = "filmId")
+	public ModelAndView deleteFilm(@RequestParam int filmId) {
+		
+		boolean createdfilm = filmDao.deleteFilm(filmId);
 
-		System.out.println("film with ID:" + "" + " has been TERMINATED from the database.");
+		ModelAndView mv = new ModelAndView();
 
-		return null;
+		mv.setViewName("WEB-INF/delete.jsp");
+		mv.addObject("film", createdfilm);
+
+		return mv;
 	}
 
 }

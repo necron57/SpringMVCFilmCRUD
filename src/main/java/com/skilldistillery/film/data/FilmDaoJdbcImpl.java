@@ -395,7 +395,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 	}
 
 	@Override
-	public boolean deleteFilm(Film film) {
+	public boolean deleteFilm(int filmId) {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(URL, userName, password);
@@ -403,7 +403,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
 			String sql = "DELETE FROM film WHERE id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, film.getId());
+			stmt.setInt(1, filmId);
 			int updateCount = stmt.executeUpdate();
 
 			conn.commit(); // COMMIT TRANSACTION
