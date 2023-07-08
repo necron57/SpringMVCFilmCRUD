@@ -17,7 +17,7 @@
 	<a href="createAFilm.html">Add your own movie here!</a>
 
 	<c:choose>
-		<c:if test="${ deleteFilm.do == true }">
+		<c:if test="${ deleteFilm.do != false }">
 			<p>Film has been TERMINATED</p>
 		</c:if>
 		<c:otherwise><p>Film is still alive try again!</p></c:otherwise>
