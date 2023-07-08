@@ -50,7 +50,7 @@ public class FilmController {
 
 	}
 
-	@RequestMapping(path = { "showFilm.do" }, params = "filmTitle")
+	@RequestMapping(path = { "createFilm.do" }, params = "filmTitle")
 	public ModelAndView showFilm(String filmTitle, String filmDescrip) {
 
 		Film film = new Film(filmTitle, filmDescrip);
@@ -63,6 +63,19 @@ public class FilmController {
 
 		return mv;
 
+	}
+
+	@RequestMapping(path = { "deleteFilm.do" }, params = "filmId")
+	public ModelAndView deleteFilm(@RequestParam int filmId) {
+
+		boolean createdfilm = filmDao.deleteFilm(filmId);
+
+		ModelAndView mv = new ModelAndView();
+
+		mv.setViewName("WEB-INF/delete.jsp");
+		mv.addObject("film", createdfilm);
+
+		return mv;
 	}
 
 }

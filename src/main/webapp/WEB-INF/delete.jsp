@@ -15,19 +15,13 @@
 		in the title or description</a>
 	<br>
 	<a href="createAFilm.html">Add your own movie here!</a>
-	<c:choose>
-		<c:when test="${not empty film }">
-			<h2>${film.title }</h2>
-			<h2>${film.description }</h2>
-			<a href="deleteFilm.do?filmId=${film.id }">Delete</a>
-		</c:when>
-		<c:when test="${not empty films }">
-			<c:forEach var="item" items="${films }">
-				<p>${item }</p>
-				<a href="deleteFilm.do?filmId=${item.id }">Delete</a>
-			</c:forEach>
 
+	<c:choose>
+		<c:when test="${empty param.deleteFilm }">
+			<p>Film has been TERMINATED</p>
 		</c:when>
+		<c:otherwise><p>Film is still alive try again!</p></c:otherwise>
+
 	</c:choose>
 
 
