@@ -11,17 +11,20 @@
 	<h1>Full-Stack Films, Inc.</h1>
 	<a href="searchById.html">Look up the film by its ID</a>
 	<br>
-	<a href="searchByKeyword.html">Look up the film by searching a word in the title or description</a>
+	<a href="searchByKeyword.html">Look up the film by searching a word
+		in the title or description</a>
+	<br>
+	<a href="createAFilm.html">Add your own movie here!</a>
 	<c:choose>
 		<c:when test="${not empty film }">
 			<h2>${film.title }</h2>
 			<h2>${film.description }</h2>
 		</c:when>
 		<c:when test="${not empty films }">
-		<c:forEach var="item" items="${films }">
-		<p>${item }</p>
-		</c:forEach>
-		
+			<c:forEach var="item" items="${films }">
+				<p>${item }</p>
+			</c:forEach>
+
 		</c:when>
 	</c:choose>
 

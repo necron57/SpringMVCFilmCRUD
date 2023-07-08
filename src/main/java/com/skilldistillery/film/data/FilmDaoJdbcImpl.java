@@ -145,7 +145,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 						continue;
 					}
 					previousTitle = currentTitle;
-
+					System.out.println("Filmid: " + film.getId());
 					System.out.println("\nTitle: " + film.getTitle());
 					System.out.println("Description: " + film.getDescription());
 					System.out.println("Release Year: " + film.getReleaseYear());
@@ -358,7 +358,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
-			stmt.setInt(3, film.getLanguageId());
+			stmt.setInt(3, 1);
 
 			int updateCount = stmt.executeUpdate();
 
@@ -396,8 +396,30 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
 	@Override
 	public boolean deleteFilm(Film film) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(URL, userName, password);
+			conn.setAutoCommit(false); // START TRANSACTION
+
+			String sql = "DELETE FROM film WHERE id = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, film.getId());
+			int updateCount = stmt.executeUpdate();
+
+			conn.commit(); // COMMIT TRANSACTION
+			conn.close();
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			return false;
+		}
+		return true;
 	}
 
 }

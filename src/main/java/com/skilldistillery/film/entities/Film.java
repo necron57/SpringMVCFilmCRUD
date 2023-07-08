@@ -160,7 +160,7 @@ public class Film {
 
 	@Override
 	public String toString() {
-		return "Film " + title + ", " + description + ", " + language + ", " + releaseYear + "," + rating + actors;
+		return "Film " + title + ", " + description + ", " + language + ", " + releaseYear + "," + rating + actors + id;
 	}
 
 	@Override
