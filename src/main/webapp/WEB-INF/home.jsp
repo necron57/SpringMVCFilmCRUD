@@ -10,13 +10,16 @@
 <body>
 	<h1>Full-Stack Films, Inc.</h1>
 	<c:choose>
-		<c:when test="${not empty film }">
+
+		<c:when test="${! empty film }">
 			<h2>${film.title }</h2>
 			<h2>${film.description }</h2>
 		</c:when>
 		<c:otherwise>
+			<p>Film not found try again</p>
 		</c:otherwise>
 	</c:choose>
+
 	<form action="showFilm.do" method="POST">
 		<input type="number" name="filmId"> <br>
 		<button>Get Film</button>

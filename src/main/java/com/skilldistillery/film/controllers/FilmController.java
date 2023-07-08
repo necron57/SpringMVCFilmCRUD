@@ -32,7 +32,7 @@ public class FilmController {
 			System.out.println(film);
 			mv.addObject("film", film);
 		} catch (SQLException e) {
-			System.out.println("error showing film");
+			
 			e.printStackTrace();
 		}
 		return mv;
