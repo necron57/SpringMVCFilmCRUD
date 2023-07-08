@@ -23,12 +23,18 @@ public class FilmController {
 	}
 
 	@RequestMapping(path = { "showFilm.do" })
-	public ModelAndView showFilm(Integer filmId) throws SQLException {
+	public ModelAndView showFilm(Integer filmId)  {
 		ModelAndView mv = new ModelAndView("WEB-INF/home.jsp");
 		System.out.println(filmId);
-		Film film = filmDao.findFilmById(filmId);
-		System.out.println(film);
-		mv.addObject("film", film);
+		Film film;
+		try {
+			film = filmDao.findFilmById(filmId);
+			System.out.println(film);
+			mv.addObject("film", film);
+		} catch (SQLException e) {
+			System.out.println("error showing film");
+			e.printStackTrace();
+		}
 		return mv;
 	}
 

@@ -1,5 +1,9 @@
 package com.skilldistillery.film.data;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -23,8 +27,30 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
 	@Override
 	public Film findFilmById(int filmId) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Film film = null;
+		String sql = "SELECT film.*, language.name FROM film JOIN language ON film.language_id = language.id WHERE film.id = ?";
+
+		Connection conn = DriverManager.getConnection(URL, userName, password);
+
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+
+		pstmt.setInt(1, filmId);
+
+		ResultSet rs = pstmt.executeQuery();
+
+		if (rs.next()) {
+
+			film = new Film(rs.getInt("film.id"), rs.getString("title"), rs.getString("description"),
+					rs.getShort("release_year"), rs.getInt("language_id"), rs.getInt("rental_duration"), rs.getDouble("rental_rate"), rs.getInt("length"),
+					rs.getDouble("replacement_cost"), rs.getString("rating"), rs.getString("special_features"));
+			film.setActors(findActorsByFilmId(filmId));
+
+		}
+
+		rs.close();
+		pstmt.close();
+		conn.close();
+		return film;
 	}
 
 	@Override
