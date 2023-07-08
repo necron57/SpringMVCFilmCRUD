@@ -65,12 +65,4 @@ public class FilmController {
 
 	}
 
-	@RequestMapping(path = { "showFilm.do" }, params = "deleteFilm")
-	public ModelAndView deleteFilm(Integer filmId) {
-
-		System.out.println("film with ID:" + "" + " has been TERMINATED from the database.");
-
-		return null;
-	}
-
 }
