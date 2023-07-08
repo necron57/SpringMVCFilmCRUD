@@ -1,10 +1,11 @@
 package com.skilldistillery.film.controllers;
 
-import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.film.data.FilmDAO;
@@ -30,9 +31,27 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/home.jsp");
 		mv.addObject("film", film);
-		System.out.println("s");
+		
 
 		return mv;
+	}
+	
+	@RequestMapping(path= {"showFilm.do"},  params="filmKeyword")
+	public ModelAndView showFilm(String filmKeyword) {
+		
+		List<Film> films = filmDao.findFilmsByKeyword(filmKeyword);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/home.jsp");
+		mv.addObject("films", films);
+		
+		return mv;
+		
+	}
+	@RequestMapping(path= {"showFilm.do"},method = RequestMethod.POST, params="addFilm")
+	public ModelAndView showFilm(double stufftochange) {
+		return null;
+		
 	}
 
 }

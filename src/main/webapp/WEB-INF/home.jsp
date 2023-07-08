@@ -9,19 +9,22 @@
 </head>
 <body>
 	<h1>Full-Stack Films, Inc.</h1>
-	<form action="showFilm.do" method="POST">
-		<input type="number" name="filmId"> <br>
-		<button>Get Film</button>
-	</form>
+	<a href="searchById.html">Look up the film by its ID</a>
+	<br>
+	<a href="searchByKeyword.html">Look up the film by searching a word in the title or description</a>
 	<c:choose>
 		<c:when test="${not empty film }">
 			<h2>${film.title }</h2>
+			<h2>${film.description }</h2>
+		</c:when>
+		<c:when test="${not empty films }">
+		<c:forEach var="item" items="${films }">
+		<p>${item }</p>
+		</c:forEach>
+		
 		</c:when>
 	</c:choose>
 
-<<<<<<< HEAD
-=======
-	
->>>>>>> cab375582a52855bd1b3a1f60fee760f74e08b76
+
 </body>
 </html>

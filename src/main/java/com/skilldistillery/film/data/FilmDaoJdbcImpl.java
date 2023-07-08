@@ -98,9 +98,8 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		try {
 			Connection conn = DriverManager.getConnection(URL, userName, password);
 
-			String sql = "SELECT film.id, film.title, film.release_year, film.rating, film.description, language.name, actor.first_name, actor.last_name\n"
-					+ "FROM film\n" + "JOIN language\n" + "ON language.id = film.language_id\n" + "JOIN film_actor\n"
-					+ "ON film.id = film_actor.film_id\n" + "JOIN actor\n" + "ON film_actor.actor_id = actor.id\n"
+			String sql = "SELECT film.id, film.title, film.release_year, film.rating, film.description, language.name\n"
+					+ "FROM film\n" + "JOIN language\n" + "ON language.id = film.language_id\n"
 					+ "WHERE film.title LIKE ? OR film.description LIKE ?";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -349,8 +348,45 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
 	@Override
 	public Film createFilm(Film film) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(URL, userName, password);
+			conn.setAutoCommit(false);
+
+			String sql = "INSERT INTO film (title, description, language_id)" + "VALUES (?,?,?)";
+			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+			stmt.setString(1, film.getTitle());
+			stmt.setString(2, film.getDescription());
+			stmt.setInt(3, film.getLanguageId());
+
+			int updateCount = stmt.executeUpdate();
+
+			if (updateCount == 1) {
+				ResultSet keys = stmt.getGeneratedKeys();
+				if (keys.next()) {
+					int newFilmId = keys.getInt(1);
+					film.setId(newFilmId);
+
+				}
+
+			} else {
+				film = null;
+				conn.rollback();
+			}
+			conn.commit();
+			conn.close();
+		} catch (SQLException e) {
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			throw new RuntimeException("Error inserting f " + film);
+		}
+		return film;
 	}
 
 	@Override
