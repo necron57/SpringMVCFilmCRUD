@@ -49,15 +49,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 						rs.getString("rating"), rs.getString("special_features"));
 				film.setActors(findActorsByFilmId(filmId));
 
-<<<<<<< HEAD
-			film = new Film(rs.getInt("film.id"), rs.getString("title"), rs.getString("description"),
-					rs.getShort("release_year"), rs.getInt("language_id"), rs.getInt("rental_duration"),
-					rs.getDouble("rental_rate"), rs.getInt("length"), rs.getDouble("replacement_cost"),
-					rs.getString("rating"), rs.getString("special_features"));
-			film.setActors(findActorsByFilmId(filmId));
-=======
 			}
->>>>>>> cab375582a52855bd1b3a1f60fee760f74e08b76
 
 			rs.close();
 			pstmt.close();
@@ -99,7 +91,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		return actor;
 
 	}
-	
+
 	@Override
 	public List<Film> findFilmsByKeyword(String keyword) {
 		List<Film> films = new ArrayList<>();
@@ -303,7 +295,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
 		return actor;
 	}
-	
+
 	public boolean saveActor(Actor actor) {
 		Connection conn = null;
 		try {
@@ -355,7 +347,6 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		return true;
 	}
 
-
 	@Override
 	public Film createFilm(Film film) {
 		// TODO Auto-generated method stub
@@ -372,6 +363,5 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 
 }
