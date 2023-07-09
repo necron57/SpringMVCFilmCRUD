@@ -405,9 +405,9 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 			stmt.setInt(4, film.getId());
 			int updateCount = stmt.executeUpdate();
 			if (updateCount == 1) {
-				conn.commit(); // COMMIT TRANSACTION
 			}
 
+			conn.commit(); // COMMIT TRANSACTION
 			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();

@@ -77,9 +77,10 @@ public class FilmController {
 
 		return mv;
 	}
-	@RequestMapping(path = { "updateFilm.do" }, params = "title")
-	public ModelAndView updateFilm(Film film) {
 
+	@RequestMapping(path = { "updateFilm.do" })
+	public ModelAndView updateFilm(@RequestParam String title, String description, int languageId, int filmId) {
+		Film film = new Film(title, description, languageId, filmId);
 		boolean updatedfilm = filmDao.updateFilm(film);
 
 		ModelAndView mv = new ModelAndView();
@@ -88,9 +89,7 @@ public class FilmController {
 		mv.addObject("film", updatedfilm);
 
 		return mv;
-		
 
 	}
-	
 
 }

@@ -22,7 +22,7 @@
 
 	 
 	 <c:choose>
-	 <c:when test="${film == true }">
+	 <c:when test="${not empty film }">
 	 <p>Film has been updated</p>
 	 </c:when>
 	 <c:otherwise>

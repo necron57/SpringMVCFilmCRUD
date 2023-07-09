@@ -26,9 +26,10 @@ public class Film {
 		this.title = title;
 		this.description = description;
 	}
-	public Film(String title, String description, int id) {
+	public Film(String title, String description, int languageId, int id) {
 		this.title = title;
 		this.description = description;
+		this.languageId = languageId;
 		this.id = id;
 	}
 
