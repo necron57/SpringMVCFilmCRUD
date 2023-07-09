@@ -77,7 +77,7 @@ public class FilmController {
 
 		return mv;
 	}
-	@RequestMapping(path = { "updateFilm.do" }, params = "filmId")
+	@RequestMapping(path = { "updateFilm.do" }, params = "title")
 	public ModelAndView updateFilm(Film film) {
 
 		boolean updatedfilm = filmDao.updateFilm(film);

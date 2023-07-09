@@ -398,14 +398,14 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
 			String sql = "UPDATE film SET title= ?, description= ?, language_id= ? WHERE id=?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			
+
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
 			stmt.setInt(3, film.getLanguageId());
 			stmt.setInt(4, film.getId());
 			int updateCount = stmt.executeUpdate();
 			if (updateCount == 1) {
-				conn.commit(); // COMMIT TRANSACTION	
+				conn.commit(); // COMMIT TRANSACTION
 			}
 
 			conn.close();
@@ -422,7 +422,6 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		}
 		return true;
 	}
-
 
 	@Override
 	public boolean deleteFilm(int filmId) {

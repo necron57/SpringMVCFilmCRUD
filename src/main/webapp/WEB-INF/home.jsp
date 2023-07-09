@@ -17,18 +17,18 @@
 	<a href="createAFilm.html">Add your own movie here!</a>
 	<c:choose>
 		<c:when test="${not empty film }">
-			<h2>${film.title }</h2>
-			<h2>${film.description }</h2>
+			<p>${film.title }</p>
+			<p>${film.description }</p>
 			<a href="deleteFilm.do?filmId=${film.id }">Delete</a>
 			<br/>
-			<a href="updateFilm.do?filmId=${film })">Update</a>
+			<a href="updateFilm.html">Update</a>
 		</c:when>
 		<c:when test="${not empty films }">
 			<c:forEach var="item" items="${films }">
 				<p>${item }</p>
 				<a href="deleteFilm.do?filmId=${item.id }">Delete</a>
 				<br/>
-				<a href="updateFilm.do?filmId=${film })">Update</a>
+				<a href="updateFilm.html">Update</a>
 			</c:forEach>
 
 		</c:when>

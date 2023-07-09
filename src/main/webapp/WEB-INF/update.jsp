@@ -18,21 +18,11 @@
 	<a href="createAFilm.html">Add your own movie here!</a>
 
 	<p>Update a film</p>
-	<form action="updateFilm.do method="post">
-	  <label for="title"> Title:</label>
-	  <input type="text" id="title" name="title">
-	  <br>
-	  <label for="description"> Description:</label>
-	  <input type="text" id="description" name="description">
-	  <br>
-	  <label for="languageId"> Language ID:</label>
-	  <input type="number" id="languageId" name="languageId">
-	  <input type="submit" name="submit" value="submit"/>
-	  
-	 </form>
+	
+	<a href="updateFilm.do?filmId=${film }">Update</a>
 	 
 	 <c:choose>
-	 <c:when test="${filmUpdated }">
+	 <c:when test="${film == true }">
 	 <p>Film has been updated</p>
 	 </c:when>
 	 <c:otherwise>
