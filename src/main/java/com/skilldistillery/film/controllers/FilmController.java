@@ -25,25 +25,35 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = { "showFilm.do" })
-	public ModelAndView showFilm(Integer filmId) {
+	@RequestMapping(path = "showFilm.do")
+	public String showFilm() {
+		return "WEB-INF/viewFilm.jsp";
+	}
+
+	@RequestMapping(path = "showFilm.do", params = "filmId")
+	public ModelAndView showFilm(int filmId) {
 
 		Film film = filmDao.findFilmById(filmId);
 
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/home.jsp");
+		mv.setViewName("WEB-INF/viewFilm.jsp");
 		mv.addObject("film", film);
 
 		return mv;
 	}
 
-	@RequestMapping(path = { "showFilm.do" }, params = "filmKeyword")
-	public ModelAndView showFilm(String filmKeyword) {
+//	@RequestMapping(path = "showByKeyWord.do")
+//	public String showFilmByKeyWord() {
+//		return "WEB-INF/viewFilm.jsp";
+//	}
+
+	@RequestMapping(path = { "showByKeyWord.do" }, params = "filmKeyword")
+	public ModelAndView showFilmByKeyWord(String filmKeyword) {
 
 		List<Film> films = filmDao.findFilmsByKeyword(filmKeyword);
 
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/home.jsp");
+		mv.setViewName("WEB-INF/viewFilm.jsp");
 		mv.addObject("films", films);
 
 		return mv;
@@ -51,14 +61,14 @@ public class FilmController {
 	}
 
 	@RequestMapping(path = { "createFilm.do" }, params = "filmTitle")
-	public ModelAndView showFilm(String filmTitle, String filmDescrip) {
+	public ModelAndView createFilm(String filmTitle, String filmDescrip) {
 
 		Film film = new Film(filmTitle, filmDescrip);
 		Film createdfilm = filmDao.createFilm(film);
 
 		ModelAndView mv = new ModelAndView();
 
-		mv.setViewName("WEB-INF/home.jsp");
+		mv.setViewName("WEB-INF/viewFilm.jsp");
 		mv.addObject("film", createdfilm);
 
 		return mv;
@@ -78,15 +88,16 @@ public class FilmController {
 		return mv;
 	}
 
+
 	@RequestMapping(path = { "updateFilm.do" })
 	public ModelAndView updateFilm(@RequestParam String title, String description, int languageId, int filmId) {
-		
+
 		Film film = new Film(title, description, languageId, filmId);
 		boolean updatedfilm = filmDao.updateFilm(film);
 
 		ModelAndView mv = new ModelAndView();
 
-		mv.setViewName("WEB-INF/update.jsp");
+		mv.setViewName("WEB-INF/updatedFilm.jsp");
 		mv.addObject("film", updatedfilm);
 
 		return mv;

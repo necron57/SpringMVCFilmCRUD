@@ -1,28 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MVC Film Site</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<h1>Full-Stack Films, Inc./Delete</h1>
+
+
 	<a href="viewFilm.jsp">Home</a>
 	<br>
 
 
 	<c:choose>
 		<c:when test="${film == true }">
-			<p>Film has been TERMINATED</p>
+			<p>Film has been updated</p>
 		</c:when>
 		<c:otherwise>
-			<p>Film cannot be deleted please try again!</p>
+			<p>Film has not been updated, please try again!</p>
 		</c:otherwise>
 
 	</c:choose>
-
 
 </body>
 </html>

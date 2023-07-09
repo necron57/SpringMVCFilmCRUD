@@ -9,35 +9,9 @@
 </head>
 <body>
 	<h1>Full-Stack Films, Inc.</h1>
-	<a href="searchById.html">Look up the film by its ID</a>
-	<br>
-	<a href="searchByKeyword.html">Look up the film by searching a word
-		in the title or description</a>
+	<a href="showFilm.do">Look up the film</a>
 	<br>
 	<a href="createAFilm.html">Add your own movie here!</a>
-	<c:choose>
-		<c:when test="${not empty film }">
-
-			<p>${film.title }</p>
-			<p>${film.description }</p>
-			<p>${film.languageId }</p>
-			<p>${film.id }</p>
-
-			<a href="deleteFilm.do?filmId=${film.id }">Delete</a>
-			<br/>
-			<a href="updateFilm.html">Update</a>
-		</c:when>
-		<c:when test="${not empty films }">
-			<c:forEach var="item" items="${films }">
-				<p>${item }</p>
-				<a href="deleteFilm.do?filmId=${item.id }">Delete</a>
-				<br/>
-				<a href="updateFilm.html">Update</a>
-			</c:forEach>
-
-		</c:when>
-	</c:choose>
-
 
 </body>
 </html>
