@@ -17,6 +17,22 @@
 	<br>
 	<a href="createAFilm.html">Add your own movie here!</a>
 
+<form action="updateFilm.do" method="POST" >
+	  <label for="title">Enter in the new Title:</label>
+	  <input type="text" id="title" name="title">
+	  <br>
+	  <label for="description"> Description:</label>
+	  <input type="text" name="description">
+	  <br>
+	  <label for="languageId"> Language ID:</label>
+	  <input type="number" name="languageId" >
+	  <br>
+	  <label for="filmId">Film ID:</label>
+	  <input type="number" name="filmId" >
+	  <br>
+	  <button>Update Film</button>
+	  
+	 </form>
 
 	 
 	 <c:choose>
