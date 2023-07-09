@@ -35,7 +35,8 @@ a {
 <body>
 	<h3>Search Film By Entering a Film ID</h3>
 	<form action="showFilm.do" method="POST">
-		<input type="number" name="filmId"> <br>
+	<label for="filmId">Enter the ID to search by: </label>
+		<br><input type="number" name="filmId"> <br>
 		<button>Get Film</button>
 	</form>
 	<c:choose>
@@ -47,7 +48,25 @@ a {
 			<p>Language ID: ${film.languageId }</p>
 			<p>Actors: ${film.actors }</p>
 
-			<a href="deleteFilm.do?filmId=${film.id }">Delete</a>
+			<a href="deleteFilm.do?filmId=${film.id }">Delete this film</a>
+			<br />
+			<h3>OR</h3>
+			<h3>Update this Film</h3>
+			<br>
+
+			<form action="updateFilm.do" method="POST">
+				<label for="title">Enter in the new Title:</label> <input
+					type="text" id="title" name="title" value="${film.title }">
+				<br> <br> <label for="description">Enter in the new Description:</label> <input
+					type="text" name="description" value="${film.description }">
+				<br> <br> <label for="languageId">Enter in the new Language ID:</label> <input
+					type="number" name="languageId" value="${film.languageId }">
+				<br> <br> <label for="filmId">Choose the Film ID that should be updated:</label> <input
+					type="number" name="filmId" value="${film.id }"> <br>
+				<br>
+				<button>Update Film</button>
+
+			</form>
 			<br />
 		</c:when>
 
@@ -56,7 +75,8 @@ a {
 
 	<h3>Search Film By Entering a KeyWord</h3>
 	<form action="showByKeyWord.do" method="POST">
-		<input type="text" name="filmKeyword"> <br>
+	<label for="filmKeyword">Enter the keyword to search: </label>
+		<br><input type="text" name="filmKeyword"> <br>
 		<button>Get Film</button>
 	</form>
 </body>
@@ -71,7 +91,24 @@ a {
 			<p>
 				Actors: <br />${item.actors }</p>
 			<br />
-			<a href="deleteFilm.do?filmId=${item.id }">Delete</a>
+			<a href="deleteFilm.do?filmId=${item.id }">Delete this film</a>
+			<h3>OR</h3>
+			<h3>Update this Film</h3>
+			<br>
+			<form action="updateFilm.do" method="POST">
+				<label for="title">Enter in the new Title:</label> <input
+					type="text" id="title" name="title" value="${item.title }">
+				<br> <br> <label for="description"> Enter in the new Description:</label> <input
+					type="text" name="description" value="${item.description }">
+				<br> <br> <label for="languageId"> Enter in the new Language ID:</label> <input
+					type="number" name="languageId" value="${item.languageId }">
+				<br> <br> <label for="filmId">Choose the Film ID that should be updated:</label> <input
+					type="number" name="filmId" value="${item.id }"> <br>
+				<br>
+				<button>Update Film</button>
+
+			</form>
+			<br />
 		</c:forEach>
 
 
@@ -80,24 +117,8 @@ a {
 
 
 
-<h3>Update Your Film</h3>
-<br>
 
-<form action="updateFilm.do" method="POST">
-	<label for="title">Enter in the new Title:</label> <input type="text"
-		id="title" name="title" value="${film.title }"> <br> <br>
-	<label for="description"> Description:</label> <input type="text"
-		name="description" value="${film.description }"> <br> <br>
-	<label for="languageId"> Language ID:</label> <input type="number"
-		name="languageId" value="${film.languageId }"> <br> <br>
-	<label for="filmId">Film ID:</label> <input type="number" name="filmId"
-		value="${film.id }"> <br> <br>
-	<button>Update Film</button>
-
-</form>
-<br />
-
-<a href="createAFilm.html">Add your own movie here!</a>
+<br><a href="createAFilm.html">Add your own movie here!</a>
 
 
 </body>
