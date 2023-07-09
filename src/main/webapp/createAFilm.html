@@ -3,17 +3,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Full-Stack Films, Inc.</title>
+<style>
+body {
+	background-color: gray;
+	font: sans-serif;
+	font-size: 21px;
+	margin: 10px 100px 10px 100px;
+}
+
+p {
+	color: white;
+}
+
+form {
+	color: white;
+}
+
+h3 {
+	color: white;
+}
+
+a {
+	color: white;
+}
+</style>
 </head>
 <body>
-	<h3>Full-Stack Films, Inc.</h3>
+	<h3 class="">Full-Stack Films, Inc.</h3>
 	<form action="createFilm.do" method="POST">
-		<input type="text" name="filmTitle" > 
-		<br> 
-		<input type="text" name="filmDescrip"> 
-			<br>
+		<label for="filmTitle">Enter in the name of the film to add: </label>
+		<input type="text" name="filmTitle"> <br> <label
+			for="filmDescrip">Enter in the description of the film to
+			add: </label> <input type="text" name="filmDescrip"> <br>
 		<button>Create Film</button>
 	</form>
-	
-	
+
+
 </body>
 </html>
