@@ -42,10 +42,10 @@ public class FilmController {
 		return mv;
 	}
 
-//	@RequestMapping(path = "showByKeyWord.do")
-//	public String showFilmByKeyWord() {
-//		return "WEB-INF/viewFilm.jsp";
-//	}
+	@RequestMapping(path = "showByKeyWord.do")
+	public String showFilmByKeyWord() {
+		return "WEB-INF/viewFilm.jsp";
+	}
 
 	@RequestMapping(path = { "showByKeyWord.do" }, params = "filmKeyword")
 	public ModelAndView showFilmByKeyWord(String filmKeyword) {
@@ -97,7 +97,7 @@ public class FilmController {
 
 		ModelAndView mv = new ModelAndView();
 
-		mv.setViewName("WEB-INF/updatedFilm.jsp");
+		mv.setViewName("WEB-INF/UpdatedFilm.jsp");
 		mv.addObject("film", updatedfilm);
 
 		return mv;

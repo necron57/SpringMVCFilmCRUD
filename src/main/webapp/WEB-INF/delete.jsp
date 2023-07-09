@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>Full-Stack Films, Inc./Delete</h1>
-	<a href="viewFilm.jsp">Home</a>
+	<a href="showFilm.do">Home</a>
 	<br>
 
 

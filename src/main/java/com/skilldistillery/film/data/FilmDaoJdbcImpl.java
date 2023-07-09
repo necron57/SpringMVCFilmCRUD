@@ -98,8 +98,8 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		try {
 			Connection conn = DriverManager.getConnection(URL, userName, password);
 
-			String sql = "SELECT film.id, film.title, film.release_year, film.rating, film.description, language.name\n"
-					+ "FROM film\n" + "JOIN language\n" + "ON language.id = film.language_id\n"
+			String sql = "SELECT film.id, film.title, film.description, film.language_id\n"
+					+ "FROM film\n"
 					+ "WHERE film.title LIKE ? OR film.description LIKE ?";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -116,17 +116,16 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 				int filmId = rs.getInt("id");
 				String title = rs.getString("title");
 				String description = rs.getString("description");
-				int releaseYear = rs.getInt("release_year");
-				String rating = rs.getString("rating");
-				String languageName = rs.getString("name");
+				
+				int languageId= rs.getInt("language_id");
+				
+				
 
 				Film film = new Film();
 				film.setId(filmId);
 				film.setTitle(title);
 				film.setDescription(description);
-				film.setReleaseYear(releaseYear);
-				film.setRating(rating);
-				film.setLanguage(languageName);
+				film.setLanguageId(languageId);
 				films.add(film);
 				film.setActors(findActorsByFilmId(filmId));
 			}
