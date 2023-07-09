@@ -150,9 +150,9 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 					System.out.println("Release Year: " + film.getReleaseYear());
 					System.out.println("Rating: " + film.getRating());
 					System.out.println("Language: " + film.getLanguage());
-					System.out.println("Actors: ");
+					System.out.println("\nActors: ");
 					for (Actor actor : film.getActors()) {
-						System.out.println(actor.getFirstName() + " " + actor.getLastName());
+						System.out.println("\n"+actor.getFirstName() + " " + actor.getLastName());
 					}
 				}
 			}

@@ -21,6 +21,7 @@
 			<p>Title: ${film.title }</p>
 			<p>Description: ${film.description }</p>
 			<p>Language ID: ${film.languageId }</p>
+			<p>Actors: ${film.actors }</p>
 
 			<a href="deleteFilm.do?filmId=${film.id }">Delete</a>
 			<br />
@@ -42,6 +43,7 @@
 			<p>Title: ${item.title }</p>
 			<p>Description: ${item.description  }</p>
 			<p>Language ID: ${item.languageId }</p>
+			<p>Actors: <br />${item.actors }</p>
 			<br />
 
 		</c:forEach>
