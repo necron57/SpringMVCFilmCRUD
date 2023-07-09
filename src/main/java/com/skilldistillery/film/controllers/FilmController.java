@@ -77,5 +77,20 @@ public class FilmController {
 
 		return mv;
 	}
+	@RequestMapping(path = { "updateFilm.do" }, params = "filmId")
+	public ModelAndView updateFilm(Film film) {
+
+		boolean updatedfilm = filmDao.updateFilm(film);
+
+		ModelAndView mv = new ModelAndView();
+
+		mv.setViewName("WEB-INF/update.jsp");
+		mv.addObject("film", updatedfilm);
+
+		return mv;
+		
+
+	}
+	
 
 }

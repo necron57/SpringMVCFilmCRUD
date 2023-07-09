@@ -8,7 +8,7 @@
 <title>MVC Film Site</title>
 </head>
 <body>
-	<h1>Full-Stack Films, Inc.</h1>
+	<h1>Full-Stack Films, Inc./Delete</h1>
 	<a href="searchById.html">Look up the film by its ID</a>
 	<br>
 	<a href="searchByKeyword.html">Look up the film by searching a word

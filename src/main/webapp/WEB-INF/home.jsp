@@ -20,11 +20,15 @@
 			<h2>${film.title }</h2>
 			<h2>${film.description }</h2>
 			<a href="deleteFilm.do?filmId=${film.id }">Delete</a>
+			<br/>
+			<a href="updateFilm.do?filmId=${film })">Update</a>
 		</c:when>
 		<c:when test="${not empty films }">
 			<c:forEach var="item" items="${films }">
 				<p>${item }</p>
 				<a href="deleteFilm.do?filmId=${item.id }">Delete</a>
+				<br/>
+				<a href="updateFilm.do?filmId=${film })">Update</a>
 			</c:forEach>
 
 		</c:when>
