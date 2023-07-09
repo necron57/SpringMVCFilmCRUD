@@ -52,9 +52,7 @@ a {
 		</c:when>
 
 	</c:choose>
-	<c:choose>
-		<c:when test="${empty film }">Film not found try again</c:when>
-	</c:choose>
+
 
 	<h3>Search Film By Entering a KeyWord</h3>
 	<form action="showByKeyWord.do" method="POST">
@@ -73,13 +71,12 @@ a {
 			<p>
 				Actors: <br />${item.actors }</p>
 			<br />
-
+			<a href="deleteFilm.do?filmId=${item.id }">Delete</a>
 		</c:forEach>
 
 
 	</c:when>
 </c:choose>
-
 
 
 

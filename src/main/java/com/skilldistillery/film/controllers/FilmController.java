@@ -34,10 +34,14 @@ public class FilmController {
 	public ModelAndView showFilm(int filmId) {
 
 		Film film = filmDao.findFilmById(filmId);
-
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/viewFilm.jsp");
-		mv.addObject("film", film);
+		if (film == null) {
+			mv.setViewName("WEB-INF/filmErrors.jsp");
+		} else {
+
+			mv.setViewName("WEB-INF/viewFilm.jsp");
+			mv.addObject("film", film);
+		}
 
 		return mv;
 	}
@@ -51,10 +55,14 @@ public class FilmController {
 	public ModelAndView showFilmByKeyWord(String filmKeyword) {
 
 		List<Film> films = filmDao.findFilmsByKeyword(filmKeyword);
-
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/viewFilm.jsp");
-		mv.addObject("films", films);
+		if (films.equals(null)) {
+			mv.setViewName("WEB-INF/filmsErrors.jsp");
+		} else {
+
+			mv.setViewName("WEB-INF/viewFilm.jsp");
+			mv.addObject("films", films);
+		}
 
 		return mv;
 
@@ -87,7 +95,6 @@ public class FilmController {
 
 		return mv;
 	}
-
 
 	@RequestMapping(path = { "updateFilm.do" })
 	public ModelAndView updateFilm(@RequestParam String title, String description, int languageId, int filmId) {
