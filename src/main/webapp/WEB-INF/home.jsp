@@ -19,6 +19,8 @@
 		<c:when test="${not empty film }">
 			<p>${film.title }</p>
 			<p>${film.description }</p>
+			<p>${film.languageId }</p>
+			<p>${film.id }</p>
 			<a href="deleteFilm.do?filmId=${film.id }">Delete</a>
 			<br/>
 			<a href="updateFilm.html">Update</a>
