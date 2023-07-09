@@ -17,9 +17,9 @@
 	<br>
 	<a href="createAFilm.html">Add your own movie here!</a>
 
-	<p>Update a film</p>
 	
-	<a href="updateFilm.do?filmId=${film }">Update</a>
+	
+
 	 
 	 <c:choose>
 	 <c:when test="${film == true }">
