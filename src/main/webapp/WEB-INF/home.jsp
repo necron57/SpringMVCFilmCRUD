@@ -17,8 +17,11 @@
 	<a href="createAFilm.html">Add your own movie here!</a>
 	<c:choose>
 		<c:when test="${not empty film }">
-			<p>${film.title }</p>
-			<p>${film.description }</p>
+			<p>Title: ${film.title }</p>
+			<br>
+			<p>Description: ${film.description }</p>
+			<br>
+			<p>Language: ${film.languageId }</p>
 			<a href="deleteFilm.do?filmId=${film.id }">Delete</a>
 			<br/>
 			<a href="updateFilm.html">Update</a>

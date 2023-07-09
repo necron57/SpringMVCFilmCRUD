@@ -17,8 +17,6 @@
 	<br>
 	<a href="createAFilm.html">Add your own movie here!</a>
 
-	
-	
 
 	 
 	 <c:choose>
