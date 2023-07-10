@@ -45,6 +45,7 @@ a {
 		<c:otherwise>
 			<p>Film has not been updated, please try again!</p>
 		</c:otherwise>
+		
 
 	</c:choose>
 

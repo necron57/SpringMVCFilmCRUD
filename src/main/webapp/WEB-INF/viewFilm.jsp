@@ -41,6 +41,7 @@ a {
 	</form>
 	<c:choose>
 		<c:when test="${not empty film }">
+		
 
 			<p>Film ID: ${film.id }</p>
 			<p>Title: ${film.title }</p>
