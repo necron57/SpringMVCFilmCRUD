@@ -98,8 +98,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		try {
 			Connection conn = DriverManager.getConnection(URL, userName, password);
 
-			String sql = "SELECT film.id, film.title, film.description, film.language_id\n"
-					+ "FROM film\n"
+			String sql = "SELECT film.id, film.title, film.description, film.language_id\n" + "FROM film\n"
 					+ "WHERE film.title LIKE ? OR film.description LIKE ?";
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -116,10 +115,8 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 				int filmId = rs.getInt("id");
 				String title = rs.getString("title");
 				String description = rs.getString("description");
-				
-				int languageId= rs.getInt("language_id");
-				
-				
+
+				int languageId = rs.getInt("language_id");
 
 				Film film = new Film();
 				film.setId(filmId);
@@ -152,7 +149,8 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 					System.out.println("Language: " + film.getLanguage());
 					System.out.println("\nActors: ");
 					for (Actor actor : film.getActors()) {
-						System.out.println("\n"+actor.getFirstName() + " " + actor.getLastName());
+						System.out.println("\n" + actor.getFirstName() + " " + actor.getLastName());
+
 					}
 				}
 			}
@@ -357,7 +355,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
-			stmt.setInt(3, 1);
+			stmt.setInt(3, film.getLanguageId());
 
 			int updateCount = stmt.executeUpdate();
 
@@ -383,7 +381,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 					System.err.println("Error trying to rollback");
 				}
 			}
-			throw new RuntimeException("Error inserting f " + film);
+
 		}
 		return film;
 	}
@@ -421,7 +419,6 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		}
 		return true;
 	}
-	
 
 	@Override
 	public boolean deleteFilm(int filmId) {

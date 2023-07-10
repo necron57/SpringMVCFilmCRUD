@@ -69,15 +69,18 @@ public class FilmController {
 	}
 
 	@RequestMapping(path = { "createFilm.do" }, params = "filmTitle")
-	public ModelAndView createFilm(String filmTitle, String filmDescrip) {
+	public ModelAndView createFilm(String filmTitle, String filmDescrip, int filmlangID) {
 
-		Film film = new Film(filmTitle, filmDescrip);
+		Film film = new Film(filmTitle, filmDescrip, filmlangID);
 		Film createdfilm = filmDao.createFilm(film);
-
 		ModelAndView mv = new ModelAndView();
+		if (createdfilm.getId() == 0) {
+			mv.setViewName("WEB-INF/createError.jsp");
+		} else {
 
-		mv.setViewName("WEB-INF/viewFilm.jsp");
-		mv.addObject("film", createdfilm);
+			mv.setViewName("WEB-INF/viewFilm.jsp");
+			mv.addObject("film", createdfilm);
+		}
 
 		return mv;
 
@@ -108,7 +111,6 @@ public class FilmController {
 		mv.addObject("film", updatedfilm);
 
 		return mv;
-		
 
 	}
 

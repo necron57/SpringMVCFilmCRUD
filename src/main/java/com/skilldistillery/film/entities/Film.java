@@ -22,9 +22,10 @@ public class Film {
 
 	}
 
-	public Film(String title, String description) {
+	public Film(String title, String description,int languageId) {
 		this.title = title;
 		this.description = description;
+		this.languageId = languageId;
 	}
 	public Film(String title, String description, int languageId, int id) {
 		this.title = title;
